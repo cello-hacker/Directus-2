@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  pocketbase:
+    image: pocketbase/pocketbase:latest
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./pb_data:/pb_data
+    environment:
+      - PB_DATA_DIR=/pb_data
+      - PB_BACKUP_DIR=/pb_data/backups
+      - PB_LOG_LEVEL=info
+    command: ["serve", "--http", "0.0.0.0:8090"]
